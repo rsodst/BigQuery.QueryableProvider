@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigQuery.Orm", "src\BigQuery.Orm\BigQuery.Orm.csproj", "{565C6FF8-88DF-47FE-AB49-27E719B834C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigQuery.App", "src\BigQuery.App\BigQuery.App.csproj", "{64DFC3FC-0878-4D27-B89E-1AC8962A5BB7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{565C6FF8-88DF-47FE-AB49-27E719B834C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{565C6FF8-88DF-47FE-AB49-27E719B834C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{565C6FF8-88DF-47FE-AB49-27E719B834C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{565C6FF8-88DF-47FE-AB49-27E719B834C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64DFC3FC-0878-4D27-B89E-1AC8962A5BB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64DFC3FC-0878-4D27-B89E-1AC8962A5BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64DFC3FC-0878-4D27-B89E-1AC8962A5BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64DFC3FC-0878-4D27-B89E-1AC8962A5BB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
