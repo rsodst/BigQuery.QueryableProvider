@@ -28,4 +28,5 @@ jobs:
         run: |  
           cd <project>
           dotnet pack -c Release -o out  
-      
+        with:
+          PROJECT_FILE_PATH: BigQuery.QueryBuilder/BigQuery.QueryBuilder.csproj
