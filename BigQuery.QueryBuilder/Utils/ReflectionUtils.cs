@@ -4,15 +4,16 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace BigQuery.Orm
+namespace BigQuery.QueryBuilder.Utils
 {
-    public static class ReflectionExtensions
+    public static class ReflectionUtils
     {
         public static IEnumerable<PropertyInfo> GetProperties<T>()
         {
-            return typeof(T).GetProperties(BindingFlags.Public);
+            return typeof(T).GetProperties();
         }
-        public static string GetPropertyName<TL,TR>(Expression<Func<TL, TR>> expression)
+
+        public static string GetPropertyName<TL, TR>(Expression<Func<TL, TR>> expression)
         {
             var expressionNameExtractors = new List<Func<Expression, string>>
             {
@@ -22,11 +23,10 @@ namespace BigQuery.Orm
                     {
                         return string.Empty;
                     }
-                        
-                    var memberExpression = (MemberExpression)expressionBody;
-                        
-                    return memberExpression.Member.Name;
 
+                    var memberExpression = (MemberExpression) expressionBody;
+
+                    return memberExpression.Member.Name;
                 },
                 expressionBody =>
                 {
@@ -34,11 +34,10 @@ namespace BigQuery.Orm
                     {
                         return string.Empty;
                     }
-                        
-                    var methodCallExpression = (MethodCallExpression)expressionBody;
-                        
-                    return methodCallExpression.Method.Name;
 
+                    var methodCallExpression = (MethodCallExpression) expressionBody;
+
+                    return methodCallExpression.Method.Name;
                 },
                 expressionBody =>
                 {
@@ -46,21 +45,21 @@ namespace BigQuery.Orm
                     {
                         return string.Empty;
                     }
-                        
-                    var unaryExpression = (UnaryExpression)expressionBody;
+
+                    var unaryExpression = (UnaryExpression) expressionBody;
 
                     if (!(unaryExpression.Operand is MethodCallExpression))
                     {
                         return ((MemberExpression) unaryExpression.Operand).Member.Name;
                     }
 
-                    var methodExpression = (MethodCallExpression)unaryExpression.Operand;
-                        
+                    var methodExpression = (MethodCallExpression) unaryExpression.Operand;
+
                     return methodExpression.Method.Name;
                 }
             };
 
-            foreach (var name in 
+            foreach (var name in
                 expressionNameExtractors
                     .Select(extractor => extractor.Invoke(expression.Body)).Where(name => !string.IsNullOrEmpty(name)))
             {

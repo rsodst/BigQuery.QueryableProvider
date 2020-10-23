@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigQuery.QueryBuilder", "BigQuery.QueryBuilder\BigQuery.QueryBuilder.csproj", "{7CA3F872-FF26-4CF2-9719-E1A9F0C74269}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigQuery.Console", "BigQuery.Console\BigQuery.Console.csproj", "{CF5A48A1-5E2B-4FA3-BAF0-829E3EE55014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigQuery.Integration.Tests", "BigQuery.Integration.Tests\BigQuery.Integration.Tests.csproj", "{1645EED6-C60E-4080-BC19-6FE1F31147E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigQuery.Migrator", "BigQuery.Migrator\BigQuery.Migrator.csproj", "{9E228746-E8A3-4C63-8C5C-AAD2030E7CEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CA3F872-FF26-4CF2-9719-E1A9F0C74269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA3F872-FF26-4CF2-9719-E1A9F0C74269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA3F872-FF26-4CF2-9719-E1A9F0C74269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA3F872-FF26-4CF2-9719-E1A9F0C74269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5A48A1-5E2B-4FA3-BAF0-829E3EE55014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5A48A1-5E2B-4FA3-BAF0-829E3EE55014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5A48A1-5E2B-4FA3-BAF0-829E3EE55014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5A48A1-5E2B-4FA3-BAF0-829E3EE55014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1645EED6-C60E-4080-BC19-6FE1F31147E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1645EED6-C60E-4080-BC19-6FE1F31147E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1645EED6-C60E-4080-BC19-6FE1F31147E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1645EED6-C60E-4080-BC19-6FE1F31147E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E228746-E8A3-4C63-8C5C-AAD2030E7CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E228746-E8A3-4C63-8C5C-AAD2030E7CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E228746-E8A3-4C63-8C5C-AAD2030E7CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E228746-E8A3-4C63-8C5C-AAD2030E7CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

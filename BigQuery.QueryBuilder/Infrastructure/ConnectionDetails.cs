@@ -1,8 +1,9 @@
-﻿namespace BigQuery.Orm
+﻿namespace BigQuery.QueryBuilder.Infrastructure
 {
-    public class BigQueryConnectionOptions
+    public class ConnectionDetails
     {
         public string ProjectId { get; set; }
+        
         public string DatasetId { get; set; }
     }
 }
