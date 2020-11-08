@@ -15,7 +15,7 @@ namespace BigQuery.QueryBuilder.Operations
         private readonly BigQueryContext _context;
         public readonly List<string> OrderAttributes = new List<string>();
         public readonly List<string> SelectedAttributes = new List<string>();
-        public readonly List<string> WhereStatements = new List<string>();
+        public readonly List<string> WhereFilters = new List<string>();
 
         public SelectOperation(BigQueryContext context, params Expression<Func<TEntity, object>>[] selectors)
         {
@@ -52,7 +52,7 @@ namespace BigQuery.QueryBuilder.Operations
             return entities;
         }
 
-        public async Task<TEntity> SelectSecondAsync() => (await SelectManyAsync()).FirstOrDefault();
+        public async Task<TEntity> SelectFirstAsync() => (await SelectManyAsync()).FirstOrDefault();
         
         // private
         private string GetSql()
@@ -60,9 +60,9 @@ namespace BigQuery.QueryBuilder.Operations
             var result = $"SELECT {(SelectedAttributes.Any() ? string.Join(", ", SelectedAttributes) : "*")} " +
                          $"\nFROM {_context.CreateFromStatement<TEntity>()}";
 
-            if (WhereStatements.Any())
+            if (WhereFilters.Any())
             {
-                result += $"\nWHERE {string.Join(" ", WhereStatements)}";
+                result += $"\nWHERE {string.Join(" ", WhereFilters)}";
             }
 
             if (OrderAttributes.Any())
@@ -97,21 +97,25 @@ namespace BigQuery.QueryBuilder.Operations
         }
 
         public static Task<TEntity> First<TEntity>(this SelectOperation<TEntity> operation,
-            GenericStatement statement)
+            Func<OperatorFactory<TEntity>, OperatorBase> filterExpression)
         {
-            operation.WhereStatements.Add(operation.WhereStatements.Any()
-                ? $"AND ({statement.Compile()})"
-                : $"{statement.Compile()}");
-
-            return operation.SelectSecondAsync();
+            var filter = filterExpression.Invoke(new OperatorFactory<TEntity>()).Filter;
+            
+            operation.WhereFilters.Add(operation.WhereFilters.Any()
+                ? $"AND ({filter})"
+                : $"{filter}");
+            
+            return operation.SelectFirstAsync();
         }
         
         public static Task<IEnumerable<TEntity>> ToList<TEntity>(this SelectOperation<TEntity> operation,
-            GenericStatement statement, int count = 10)
+            Func<OperatorFactory<TEntity>, OperatorBase> filterExpression)
         {
-            operation.WhereStatements.Add(operation.WhereStatements.Any()
-                ? $"AND ({statement.Compile()})"
-                : $"{statement.Compile()}");
+            var filter = filterExpression.Invoke(new OperatorFactory<TEntity>()).Filter;
+            
+            operation.WhereFilters.Add(operation.WhereFilters.Any()
+                ? $"AND ({filter})"
+                : $"{filter}");
 
             return operation.SelectManyAsync();
         }

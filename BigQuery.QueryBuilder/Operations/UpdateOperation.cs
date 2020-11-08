@@ -9,9 +9,9 @@ namespace BigQuery.QueryBuilder.Operations
     {
         private readonly string _whereCondition = null;
         
-        public UpdateOperation(GenericStatement statement)
+        public UpdateOperation(OperatorBase operatorBase)
         {
-            _whereCondition = statement.Compile();
+            _whereCondition = operatorBase.Filter;
         }
         
         public void From (params (Expression<Func<TEntity,object>>, object)[] updateExpressions)

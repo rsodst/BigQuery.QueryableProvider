@@ -6,11 +6,11 @@ namespace BigQuery.QueryBuilder.Operations
     public class DeleteOperation<TEntity>
     {
         private readonly BigQueryContext _context;
-        private readonly string _whereCondition = null;
+        private readonly string _whereCondition;
         
-        public DeleteOperation(GenericStatement statement)
+        public DeleteOperation(OperatorBase operatorBase)
         {
-            _whereCondition = statement.Compile();
+            _whereCondition = operatorBase.Filter;
         }
 
         public Task DeleteAsync()

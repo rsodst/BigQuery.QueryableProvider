@@ -77,7 +77,7 @@ namespace BigQuery.QueryBuilder.Operations
                 && !new[] {"System.String", "System.Guid", "System.DateTime"}
                     .Contains(propertyInfo.PropertyType.FullName))
             {
-                throw new NotImplementedException("Not implemented for Record Type");
+                throw new NotImplementedException("Not implemented for Complex Type");
             }
         }
     }

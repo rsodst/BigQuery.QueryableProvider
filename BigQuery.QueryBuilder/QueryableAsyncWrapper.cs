@@ -26,9 +26,9 @@ namespace BigQuery.QueryBuilder
             return new SelectOperation<TEntity>(_context, selectors);
         }
 
-        public Task Delete(GenericStatement whereStatement)
+        public Task Delete(OperatorBase whereOperatorBase)
         {
-            return new DeleteOperation<TEntity>(whereStatement).DeleteAsync();
+            return new DeleteOperation<TEntity>(whereOperatorBase).DeleteAsync();
         }
 
         public Task<BigQueryInsertResults> Insert(params TEntity[] entity)
@@ -36,9 +36,9 @@ namespace BigQuery.QueryBuilder
             return new InsertOperation<TEntity>(_context, entity).InsertAsync();
         }
 
-        public UpdateOperation<TEntity> Update(GenericStatement whereStatement)
+        public UpdateOperation<TEntity> Update(OperatorBase whereOperatorBase)
         {
-            return new UpdateOperation<TEntity>(whereStatement);
+            return new UpdateOperation<TEntity>(whereOperatorBase);
         }
 
         public async Task<bool> IsExists()
